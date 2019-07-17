@@ -1,0 +1,55 @@
+Help
+
+* have built a docker version ??? or a version locally using docker
+to do the construction??
+* have got ability to run something
+- which is run_docker server --port 8002
+which starts up a docker instance, but mounts a volume of PWD to /src
+so src/src should be
+
+
+* the pyodide command in bin of the generated files (in pyodide/pyodide)
+will serve the files in build dir from 8002
+
+* If I adjust to have a new file (test2.html)
+
+    <script src="./pyodide_dev.js"></script>
+  </head>
+  <body>
+
+          <div id="test1">Hello</div>
+
+    <script>
+      languagePluginLoader.then(() => {
+        pyodide.runPython(`
+          import io, code, sys
+          from js import pyodide
+          from js import document
+          elt = document.getElementById("test1")
+          elt.innerText = "I am changed!" 
+        `)
+
+      });
+    </script>
+
+
+
+Then it actually works !
+We manipulate the DOM from Python !
+I need to understand if there is a way to launch without python etc.
+
+Biblio
+https://hacks.mozilla.org/2019/04/pyodide-bringing-the-scientific-python-stack-to-the-browser/
+
+I want to be able to ... compile from python to wasm, such that i have a bunch of 
+library files that do.. say ... form management 
+
+Stage 1
+-------
+
+Use their official Release - good enough for now, but need to get to stage can build 
+myself
+
+Download it from github - then ??? What is it ?? WASM?
+
+
